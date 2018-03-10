@@ -94,6 +94,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias tmuxifier="~/.tmuxifier/bin/tmuxifier"
+alias mlenv="source ~/environs/mlenv/bin/activate"
+alias ravenclaw="sudo sshfs -o allow_other tonydero@ravenclaw.nmsu.edu:/home/tonydero/ ~/ravenclaw/"
 #
 # Tilix fix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
