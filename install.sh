@@ -16,7 +16,7 @@ sudo add-apt-repository ppa:webupd8team/terminix
 sudo apt update
 
 ## apt repo installs
-sudo apt install -y zsh vim i3 rxvt-unicode htop vifm firefox tmux rofi code vlc tilix
+sudo apt install -y zsh vim i3 rxvt-unicode htop sshfs vifm firefox tmux rofi code vlc tilix
 
 ## git installs
 
