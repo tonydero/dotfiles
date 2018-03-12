@@ -10,10 +10,13 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microso
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
+# tilix tiling terminal
+sudo add-apt-repository ppa:webupd8team/terminix
+
 sudo apt update
 
 ## apt repo installs
-sudo apt install -y zsh vim i3 rxvt-unicode htop vifm firefox tmux rofi code vlc
+sudo apt install -y zsh vim i3 rxvt-unicode htop vifm firefox tmux rofi code vlc tilix
 
 ## git installs
 
