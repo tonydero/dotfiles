@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# basics
+sudo apt install curl git
+
 ## add needed repos
 
 # vscode
@@ -22,11 +27,28 @@ cd fonts
 cd ..
 rm -rf fonts
 
+# oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# powerlevel9k
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
 # dotfiles
 mkdir ~/repos/
 git clone https://github.com/tonydero/dotfiles.git ~/repos/dotfiles
 
 ## i3-gaps
+echo Are you running Ubuntu 16.04 or lower?
+
+read ubvers
+
+if [ $ubvers = 'y' ]
+then
+  sudo add-apt-repository ppa:aguignard/ppa
+  sudo apt-get update
+  sudo apt-get install libxcb-xrm-dev
+fi
+
 sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake
 
 cd ~/repos
@@ -53,11 +75,19 @@ cd ~/repos
 rm -rf polybar
 
 ## installing dotfiles
-\cp -rf ~/repos/dotfiles/.zshrc ~/.zshrc
-\cp -rf ~/repos/dotfiles/.vimrc ~/.vimrc
-\cp -rf ~/repos/dotfiles/.Xresources ~/.Xresources
-\cp -rf ~/repos/dotfiles/i3config ~/.config/i3/config
-\cp -rf ~/repos/dotfiles/pbconfig ~/.config/polybar/config
+sudo \cp -rf ~/repos/dotfiles/.zshrc ~/.zshrc
+sudo \cp -rf ~/repos/dotfiles/.vimrc ~/.vimrc
+sudo \cp -rf ~/repos/dotfiles/.Xresources ~/.Xresources
+if [ ! -d ~/.config/i3/ ]
+then
+  sudo mkdir ~/.config/i3
+fi
+sudo \cp -rf ~/repos/dotfiles/i3config ~/.config/i3/config
+if [ ! -d ~/.config/polybar/ ]
+then
+  sudo mkdir ~/.config/polybar
+fi
+sudo \cp -rf ~/repos/dotfiles/pbconfig ~/.config/polybar/config
 
 
 ## chrome
